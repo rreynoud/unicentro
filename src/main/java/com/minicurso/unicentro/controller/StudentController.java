@@ -1,10 +1,8 @@
 package com.minicurso.unicentro.controller;
 
 import com.minicurso.unicentro.model.Student;
-import com.minicurso.unicentro.service.StudentService;
+import com.minicurso.unicentro.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,17 +11,16 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     @Autowired
-    private StudentService service;
+    private StudentRepository repository;
 
     @GetMapping(path="")
-    public @ResponseBody ResponseEntity<Page<Student>> findAll(Pageable pageable) {
-        return ResponseEntity.ok(service.findAll(pageable));
+    public @ResponseBody ResponseEntity<Iterable<Student>> findAll() {
+        return ResponseEntity.ok(repository.findAll());
     }
 
     @PostMapping(path="")
     public @ResponseBody ResponseEntity<Student> create(@RequestBody Student entity) {
-
-        entity = service.create(entity);
+        entity = repository.save(entity);
 
         return ResponseEntity.ok(entity);
     }
