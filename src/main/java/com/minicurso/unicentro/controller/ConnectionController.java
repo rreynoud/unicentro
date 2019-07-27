@@ -10,11 +10,11 @@ import java.util.Map;
 
 
 @RestController
-@RequestMapping("test-connection")
-public class TestConnectionController {
+@RequestMapping("connection")
+public class ConnectionController {
 
-    @GetMapping
-    public ResponseEntity<String> testConnection(){
-        return ResponseEntity.ok("Funcionando");
+    @GetMapping(path="/status")
+    public ResponseEntity<String> status(){
+        return ResponseEntity.ok("Status: Funcionando");
     }
 }

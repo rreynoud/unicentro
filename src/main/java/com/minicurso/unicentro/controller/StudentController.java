@@ -13,12 +13,12 @@ public class StudentController {
     @Autowired
     private StudentRepository repository;
 
-    @GetMapping(path="")
+    @GetMapping
     public @ResponseBody ResponseEntity<Iterable<Student>> findAll() {
         return ResponseEntity.ok(repository.findAll());
     }
 
-    @PostMapping(path="")
+    @PostMapping
     public @ResponseBody ResponseEntity<Student> create(@RequestBody Student entity) {
         entity = repository.save(entity);
 
