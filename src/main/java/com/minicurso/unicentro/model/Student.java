@@ -2,19 +2,18 @@ package com.minicurso.unicentro.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Student {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    Long id;
+    @GeneratedValue
+    private Long id;
 
-    String name ;
+    private String name ;
 
-    Integer semester;
+    private  Integer semester;
 
     public Long getId() {
         return id;
